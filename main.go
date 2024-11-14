@@ -200,18 +200,20 @@ func MakeDirTrees(books []Notebook) []*Book {
 	)
 	// filter list
 	for _, value := range books {
-		if value.ParentNotebookId == "" {
-			roots = append(roots, &Book{
-				Id:       value.NotebookId,
-				Title:    value.Title,
-				ParentId: "",
-			})
-		} else {
-			childs = append(childs, &Book{
-				Id:       value.NotebookId,
-				Title:    value.Title,
-				ParentId: value.ParentNotebookId,
-			})
+		if !value.IsDeleted {
+		    if value.ParentNotebookId == "" {
+				roots = append(roots, &Book{
+					Id:       value.NotebookId,
+					Title:    value.Title,
+					ParentId: "",
+				})
+			} else {
+				childs = append(childs, &Book{
+					Id:       value.NotebookId,
+					Title:    value.Title,
+					ParentId: value.ParentNotebookId,
+				})
+			}
 		}
 	}
 

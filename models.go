@@ -38,6 +38,7 @@ type Notebook struct {
 	ParentNotebookId string // 上级
 	Seq              int // 排序
 	Title            string
+	UrlTitle		 string
 	IsBlog           bool
 	IsDeleted	 bool
 	CreatedTime      time.Time
